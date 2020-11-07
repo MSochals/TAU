@@ -54,7 +54,9 @@ public class calc {
 			}
 			
 			q = q - 1;
+			
 			double wynik2 = wynik - 1;
+			
 			rata = kwota * wynik * q / wynik2;
 			kwota_zwrotu = rata * okr;
 			kwota_zwrotu *= 100;
