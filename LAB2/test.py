@@ -3,5 +3,5 @@ import logging
 
 from selenium.webdriver.common import by
 
-driver = webdriver.Opera(executable_path='C:\operadriver.exe')
+driver = webdriver.Opera(executable_path='WebDrivers\operadriver.exe')
 
