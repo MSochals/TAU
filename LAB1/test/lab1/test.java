@@ -1,14 +1,9 @@
 package lab1;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.Test;
+class calcTest {
 
-class test {
-
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
+	
 
 }

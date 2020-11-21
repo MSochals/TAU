@@ -13,14 +13,20 @@ public class calc {
 		double kwota;
 		Scanner scan = new Scanner(System.in);
 		kwota = scan.nextDouble();
+		if (kwota <= 0)
+			throw new IllegalArgumentException("Kwota kredytu musi byc wieksza od 0!");
 		
 		System.out.print("Podaj oprocentowanie: ");
 		double opr;
 		opr = scan.nextDouble();
+		if (opr < 0)
+			throw new IllegalArgumentException("Oprocentowanie nie moze byc mniejsze od 0!");
 		
 		System.out.print("Podaj okres kredytu w miesiacach: ");
 		int okr;
 		okr = scan.nextInt();
+		if (okr <= 0)
+			throw new IllegalArgumentException("Okres kredytu musi byc wiekszy od 0!");
 		
 		System.out.print("Rata malejaca, czy stala? Dla malejacej wpisz 1, a dla stalej 2: ");
 		int rata_rodzaj;
