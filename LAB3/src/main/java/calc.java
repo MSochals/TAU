@@ -3,9 +3,47 @@ import java.util.Scanner;
 public class calc {
 
     public static double kwota; // Robimy dla prostoty na polach publicznych (mimo, ze sie nie powinno)
+    public static double opr;
+    public static int okr;
+    public static int rata_rodzaj;
     public static double kwota_zwrotu;
     public static double rata;
     public static double wynik;
+
+    public static double WczytKwota(double kwota) {
+        System.out.print("Podaj kwote: ");
+        Scanner scan = new Scanner(System.in);
+        kwota = scan.nextDouble();
+        if (kwota <= 0)
+            throw new IllegalArgumentException("Kwota kredytu musi byc wieksza od 0!");
+        return kwota;
+    }
+
+    public static double WczytOpr(double opr) {
+        System.out.print("Podaj oprocentowanie: ");
+        Scanner scan = new Scanner(System.in);
+        opr = scan.nextDouble();
+        if (opr < 0)
+            throw new IllegalArgumentException("Oprocentowanie nie moze byc mniejsze od 0!");
+        return opr;
+    }
+
+    public static int WczytOkres(int okr) {
+        System.out.print("Podaj okres kredytu w miesiacach: ");
+        Scanner scan = new Scanner(System.in);
+        okr = scan.nextInt();
+        if (okr <= 0)
+            throw new IllegalArgumentException("Okres kredytu musi byc wiekszy od 0!");
+        return okr;
+    }
+
+    public static int WczytRodzaj(int rata_rodzaj) {
+        System.out.print("Rata malejaca, czy stala? Dla malejacej wpisz 1, a dla stalej 2: ");
+        Scanner scan = new Scanner(System.in);
+        rata_rodzaj = scan.nextInt();
+        return rata_rodzaj;
+    }
+
     public static double RataMal(double kwota, double opr, double okr) {
         kwota_zwrotu = 0;
         rata = 0;
@@ -62,35 +100,15 @@ public class calc {
     public static void main(String[] args) {
 
         System.out.println("Kalkulator kredytowy");
+        kwota = WczytKwota(kwota);
+        opr = WczytOpr(opr);
+        okr = WczytOkres(okr);
+        int temp = WczytRodzaj(rata_rodzaj);
 
-        System.out.print("Podaj kwote: ");
-        double kwota;
-        Scanner scan = new Scanner(System.in);
-        kwota = scan.nextDouble();
-        if (kwota <= 0)
-            throw new IllegalArgumentException("Kwota kredytu musi byc wieksza od 0!");
-
-        System.out.print("Podaj oprocentowanie: ");
-        double opr;
-        opr = scan.nextDouble();
-        if (opr < 0)
-            throw new IllegalArgumentException("Oprocentowanie nie moze byc mniejsze od 0!");
-
-        System.out.print("Podaj okres kredytu w miesiacach: ");
-        int okr;
-        okr = scan.nextInt();
-        if (okr <= 0)
-            throw new IllegalArgumentException("Okres kredytu musi byc wiekszy od 0!");
-
-        System.out.print("Rata malejaca, czy stala? Dla malejacej wpisz 1, a dla stalej 2: ");
-        int rata_rodzaj;
-        rata_rodzaj = scan.nextInt();
-
-
-        if (rata_rodzaj == 1) {
+        if (temp == 1) {
             RataMal(kwota, opr, okr);
         }
-        else if (rata_rodzaj == 2) {
+        else if (temp == 2) {
             RataSt(kwota, opr, okr);
         }
     }
