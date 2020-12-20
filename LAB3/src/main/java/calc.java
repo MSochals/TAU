@@ -9,6 +9,7 @@ public class calc {
     public static double kwota_zwrotu;
     public static double rata;
     public static double wynik;
+    public static double doplata;
 
     public static double WczytKwota(double kwota) {
         System.out.print("Podaj kwote: ");
@@ -97,6 +98,14 @@ public class calc {
         return kwota_zwrotu;
     }
 
+    public static double Odsetki(double kwota, double kwota_zwrotu) {
+        doplata = kwota_zwrotu - kwota;
+        doplata *= 100;
+        doplata = Math.round(doplata);
+        doplata /= 100;
+        return doplata;
+    }
+
     public static void main(String[] args) {
 
         System.out.println("Kalkulator kredytowy");
@@ -111,5 +120,6 @@ public class calc {
         else if (temp == 2) {
             RataSt(kwota, opr, okr);
         }
+        System.out.println("Odsetki: "+ Odsetki(kwota, kwota_zwrotu));
     }
 }
