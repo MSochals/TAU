@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class calc {
+public class Calc {
 
     public static double kwota; // Robimy dla prostoty na polach publicznych (mimo, ze sie nie powinno)
     public static double opr;
@@ -11,7 +11,7 @@ public class calc {
     public static double wynik;
     public static double doplata;
 
-    public static double WczytKwota(double kwota) {
+    public static double wczytKwota(double kwota) {
         System.out.print("Podaj kwote: ");
         Scanner scan = new Scanner(System.in);
         kwota = scan.nextDouble();
@@ -20,7 +20,7 @@ public class calc {
         return kwota;
     }
 
-    public static double WczytOpr(double opr) {
+    public static double wczytOpr(double opr) {
         System.out.print("Podaj oprocentowanie: ");
         Scanner scan = new Scanner(System.in);
         opr = scan.nextDouble();
@@ -29,7 +29,7 @@ public class calc {
         return opr;
     }
 
-    public static int WczytOkres(int okr) {
+    public static int wczytOkres(int okr) {
         System.out.print("Podaj okres kredytu w miesiacach: ");
         Scanner scan = new Scanner(System.in);
         okr = scan.nextInt();
@@ -38,14 +38,14 @@ public class calc {
         return okr;
     }
 
-    public static int WczytRodzaj(int rata_rodzaj) {
+    public static int wczytRodzaj(int rata_rodzaj) {
         System.out.print("Rata malejaca, czy stala? Dla malejacej wpisz 1, a dla stalej 2: ");
         Scanner scan = new Scanner(System.in);
         rata_rodzaj = scan.nextInt();
         return rata_rodzaj;
     }
 
-    public static double RataMal(double kwota, double opr, double okr) {
+    public static double rataMal(double kwota, double opr, double okr) {
         kwota_zwrotu = 0;
         rata = 0;
         int i = 1;
@@ -69,7 +69,7 @@ public class calc {
         return kwota_zwrotu;
     }
 
-    public static double RataSt(double kwota, double opr, double okr) {
+    public static double rataSt(double kwota, double opr, double okr) {
         kwota_zwrotu = 0;
         rata = 0;
         double q = 1 + ((opr/100)/12);
@@ -98,7 +98,7 @@ public class calc {
         return kwota_zwrotu;
     }
 
-    public static double Odsetki(double kwota, double kwota_zwrotu) {
+    public static double odsetki(double kwota, double kwota_zwrotu) {
         doplata = kwota_zwrotu - kwota;
         doplata *= 100;
         doplata = Math.round(doplata);
@@ -109,17 +109,17 @@ public class calc {
     public static void main(String[] args) {
 
         System.out.println("Kalkulator kredytowy");
-        kwota = WczytKwota(kwota);
-        opr = WczytOpr(opr);
-        okr = WczytOkres(okr);
-        int temp = WczytRodzaj(rata_rodzaj);
+        kwota = wczytKwota(kwota);
+        opr = wczytOpr(opr);
+        okr = wczytOkres(okr);
+        int temp = wczytRodzaj(rata_rodzaj);
 
         if (temp == 1) {
-            RataMal(kwota, opr, okr);
+            rataMal(kwota, opr, okr);
         }
         else if (temp == 2) {
-            RataSt(kwota, opr, okr);
+            rataSt(kwota, opr, okr);
         }
-        System.out.println("Odsetki: "+ Odsetki(kwota, kwota_zwrotu));
+        System.out.println("Odsetki: "+ odsetki(kwota, kwota_zwrotu));
     }
 }
